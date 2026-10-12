@@ -130,21 +130,15 @@ Open the local URL displayed in the terminal.
 - [x] Document measured performance using reproducible tests.
 - [x] Confirm permission to redistribute the original code and trained model.
 
-## 🙏 Acknowledgments
-
-This project is based on the existing **WasteAI — Smart Waste Classifier** project by [Shweta Tiwari](https://github.com/Shwetatiwari05/WasteAI).
-
-- Original repository: [Shwetatiwari05/WasteAI](https://github.com/Shwetatiwari05/WasteAI)
-- Original hosted demo: [Waste Classifier AI](https://huggingface.co/spaces/ShwetaTiwari05/waste-classifier-ai)
-
-The existing application, trained model, and related implementation originate from the original project. Our team's work focuses on deployment, evaluation, documentation, and academic demonstration. Please consult the original creator regarding permission to redistribute or modify the project and model.
-
-## 📄 License
-
-No license has been confirmed for the original project. Permission to redistribute the original code and model should be established before selecting or adding a license to this repository.
-
 ## 🌍 Our Goal
 
 To explore how accessible AI applications can support environmental awareness, waste segregation, and responsible recycling practices.
+
+## 👥 Project Team
+
+- **Sivaprasanth T** — Team Leader
+- **Rupesh V P** — Team Member
+- **Sivakrishnan S** — Team Member
+- **Devadharshini S R** — Team Member
 
 **Built and documented by the WasteWise AI project team.**
