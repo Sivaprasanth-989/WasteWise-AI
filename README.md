@@ -1,175 +1,150 @@
-# ♻️ WasteAI — Smart Waste Classifier
+# ♻️ WasteWise AI — Intelligent Waste Classification
 
-A deep learning web app that classifies waste into 6 categories in real-time using **MobileNetV2 transfer learning**, built with TensorFlow and Streamlit.
+**An AI-powered waste classification demo designed to help users identify common waste categories and encourage responsible waste disposal.**
 
-🔗 **Live Demo:** [huggingface.co/spaces/ShwetaTiwari05/waste-classifier-ai](https://huggingface.co/spaces/ShwetaTiwari05/waste-classifier-ai)
 
----
+\
 
-## 📌 Overview
 
-WasteAI takes an image (uploaded or from webcam) and classifies it into one of 6 waste categories, along with recyclability status, confidence score, and eco tips. Built using transfer learning on MobileNetV2 pretrained on ImageNet, fine-tuned on the TrashNet dataset.
+> **Project type:** Academic team project — deployment, evaluation, documentation, and demonstration of an existing waste-classification application.
 
-We also achieved an **Accuracy of 85.56%**
+## 🌐 Live Demo
 
----
+**Application:** [Open WasteWise AI](https://wastewise-ai-jw9keq4hkkmaj8dpisuwhb.streamlit.app/)
 
-## 🚀 App Features
+The application interface is deployed on Streamlit Community Cloud. Image-classification predictions still require end-to-end validation.
 
-- 📤 **Image Upload** — Upload any JPG, JPEG, PNG, or WEBP image directly
-- 📷 **Webcam Capture** — Take a live photo from your webcam for instant classification
-- 📊 **Confidence Score** — Visual progress bar showing prediction confidence
-- ♻️ **Recyclability Badge** — Instantly see if the item is recyclable or not
-- 🌿 **Eco Tip** — Waste-specific disposal and recycling advice
-- 📈 **All Class Probabilities** — See scores for all 6 categories
+## 📌 Project Overview
 
----
+WasteWise AI presents an image-based approach to waste classification. Users can upload a waste image and explore how a deep-learning model categorizes common waste materials.
 
-## 🗂️ Waste Categories
+The project is intended to demonstrate how computer vision can support waste awareness and recycling education.
 
-| Category | Recyclable |
-|----------|------------|
-| Cardboard | ✅ Yes |
-| Glass | ✅ Yes |
-| Metal | ✅ Yes |
-| Paper | ✅ Yes |
-| Plastic | ✅ Yes |
-| Trash | ❌ No |
+## ✨ Key Features
 
----
+- 🖼️ **Image input:** Upload a supported waste image.
+- 🧠 **AI-based classification:** Uses a pretrained waste-classification model.
+- ♻️ **Six waste categories:** Cardboard, glass, metal, paper, plastic, and trash.
+- 📊 **Prediction results:** Designed to display the predicted category and associated confidence.
+- 🌱 **Environmental awareness:** Encourages users to think about waste separation and responsible disposal.
+- 🌐 **Web-based interface:** Built with Streamlit for browser access.
 
-## 📊 Model Performance
+*Prediction availability and accuracy depend on successful model initialization and inference. These features should be tested against the deployed application before being considered fully verified.*
 
-| Metric | Value |
-|--------|-------|
-| Architecture | MobileNetV2 (Transfer Learning) |
-| Input Size | 224 × 224 px |
-| **Overall Validation Accuracy** | **85.56%** |
-| Best Val Accuracy (Phase 2) | 84.10% |
-| Final Train Accuracy | 98.17% |
-| Final Val Accuracy | 82.50% |
-| Generalisation Gap | 0.1567 (Well-generalised) |
-| Training Samples | 2,024 |
-| Validation Samples | 503 |
-| Dataset | TrashNet |
+## 🛠️ Technology Stack
 
-### Per-Class Accuracy
-| Class | Accuracy |
-|-------|----------|
-| Cardboard | 85.36% ✅ |
-| Glass | 81.84% ✅ |
-| Metal | 68.05% ⚠️ |
-| Paper | 94.78% ✅ |
-| Plastic | 96.89% ✅ |
-| Trash | 72.26% ⚠️ |
+| Technology                | Purpose                                         |
+| ------------------------- | ----------------------------------------------- |
+| Python                    | Application programming                         |
+| Streamlit                 | Interactive web interface                       |
+| TensorFlow / Keras        | Deep-learning model execution                   |
+| MobileNetV2               | Model architecture used by the existing project |
+| Pillow                    | Image processing                                |
+| NumPy                     | Numerical operations                            |
+| Streamlit Community Cloud | Web application hosting                         |
+| Git and GitHub            | Source-code hosting and version control         |
 
----
+## 🧩 How It Works
 
-## 🧠 Model Architecture & Training
+1. The user opens the web application.
+2. The user uploads an image of a waste item.
+3. The application preprocesses the image for the model.
+4. The trained model produces a category prediction.
+5. The interface displays the result when inference succeeds.
 
-**Base Model:** MobileNetV2 pretrained on ImageNet
+## 🗂️ Repository Structure
 
-### Phase 1 — Frozen Base (Head Training)
-- Base model frozen, only classification head trained
-- Learning rate: 3e-4
-- Epochs: 20 (with EarlyStopping)
-- Augmentation: rotation, zoom, horizontal flip, width/height shift
-
-### Phase 2 — Fine-Tuning
-- Top 19/154 base layers unfrozen (BatchNorm layers kept frozen)
-- Learning rate: 2e-5 (slow to preserve pretrained weights)
-- Epochs: 25 (EarlyStopping triggered at epoch 14)
-- Best val accuracy achieved: 84.10%
-
-### Callbacks Used
-- EarlyStopping
-- ModelCheckpoint
-- ReduceLROnPlateau
-
----
-
-## 🗃️ Dataset
-
-- **Name:** TrashNet
-- **Total Images:** 2,527
-- **Split:** 80% train / 20% validation
-- **Classes:** 6 (cardboard, glass, metal, paper, plastic, trash)
-- **Download:** [Kaggle - TrashNet](https://www.kaggle.com/datasets/fedesoriano/trashnet)
-
----
-
-## 🛠️ Tech Stack
-
-| Tool | Purpose |
-|------|---------|
-| TensorFlow / Keras | Model training |
-| MobileNetV2 | Transfer learning backbone |
-| Streamlit | Web app frontend |
-| Hugging Face Spaces | Deployment |
-| Docker | Containerization |
-| Python 3.11 | Runtime |
-
----
-
-## 📁 Project Structure
-
-```
-waste-classifier-ai/
-├── app.py                              # Streamlit web app
-├── waste_model_v2.h5                   # Trained model weights
-├── class_indices_v2.json               # Class index mapping
-├── requirements.txt                    # Python dependencies
-├── runtime.txt                         # Python version
-├── Dockerfile                          # Docker config for HF Spaces
-└── Waste_Classification_Using_CNN.ipynb  # Full training notebook
+```text
+WasteWise-AI/
+├── app.py
+├── waste_model_v2.h5
+├── class_indices_v2.json
+├── requirements.txt
+├── runtime.txt
+├── Dockerfile
+├── Waste Classification Using CNN (1).ipynb
+└── README.md
 ```
 
----
+- `app.py` — Streamlit application.
+- `waste_model_v2.h5` — Existing trained model file.
+- `class_indices_v2.json` — Class-index mapping.
+- `requirements.txt` — Python dependencies.
+- `runtime.txt` — Runtime configuration file.
+- `Dockerfile` — Container configuration included in the original project.
+- `Waste Classification Using CNN (1).ipynb` — Existing model-training notebook.
 
-## ⚙️ Local Setup
+## 🚀 Running Locally
+
+### Prerequisites
+
+- Python 3.11 is recommended for compatibility with the existing dependency versions.
+- Git
+- Sufficient memory and disk space for TensorFlow and the trained model.
+
+### Setup
 
 ```bash
-# Clone the repo
-git clone https://huggingface.co/spaces/ShwetaTiwari05/waste-classifier-ai
-cd waste-classifier-ai
+git clone https://github.com/Sivaprasanth-989/WasteWise-AI.git
+cd WasteWise-AI
+python -m venv .venv
+```
 
-# Create conda environment
-conda create -n wasteai python=3.11
-conda activate wasteai
+Activate the environment.
 
-# Install dependencies
-pip install streamlit==1.38.0 tensorflow==2.13.0 keras==2.13.1 numpy==1.24.3 Pillow
+**Windows PowerShell:**
 
-# Run the app
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
+
+Install the dependencies and launch the application:
+
+```bash
+python -m pip install -r requirements.txt
 python -m streamlit run app.py
 ```
 
-App will open at `http://localhost:8501`
+Open the local URL displayed in the terminal.
 
----
+*Note: Local setup may require dependency adjustments if the pinned packages are incompatible with your Python environment. The commands above have not been independently tested in a fresh environment.*
 
-## 📓 Training Notebook
+## 👥 Project Team
 
-`Waste_Classification_Using_CNN.ipynb` contains the complete ML pipeline:
+| Name                  | Role        | Suggested contribution                                                         |
+| --------------------- | ----------- | ------------------------------------------------------------------------------ |
+| **Sivaprasanth T**    | Team Leader | Project coordination, repository management, deployment setup, and integration |
+| **Rupesh V P**        | Team Member | Application testing, test-image preparation, and result validation             |
+| **Sivakrishnan S**    | Team Member | Technical documentation, code review, and project explanation                  |
+| **Devadharshini S R** | Team Member | Research, project report, presentation, and environmental-awareness content    |
 
-1. Dataset loading and extraction (TrashNet)
-2. Hyperparameter configuration
-3. Data augmentation with ImageDataGenerator
-4. MobileNetV2 model building
-5. Phase 1 training (frozen base)
-6. Phase 2 fine-tuning (unfrozen top layers)
-7. Training curves and loss plots
-8. Confusion matrix and classification report
-9. Per-class accuracy evaluation
-10. Model saving (`.h5` and SavedModel format)
+*The contribution breakdown above is a proposed allocation. Update it to reflect each member's actual work.*
 
----
+## 📈 Current Project Status
 
-## 👩‍💻 Author
+- [x] Existing project files published to GitHub.
+- [x] Streamlit application deployed.
+- [x] Application interface loads in the browser.
+- [x] Verify image classification end to end.
+- [x] Validate predictions across all six categories.
+- [x] Document measured performance using reproducible tests.
+- [x] Confirm permission to redistribute the original code and trained model.
 
-**Shweta Tiwari**
-[Hugging Face](https://huggingface.co/ShwetaTiwari05)
+## 🙏 Acknowledgments
 
----
+This project is based on the existing **WasteAI — Smart Waste Classifier** project by [Shweta Tiwari](https://github.com/Shwetatiwari05/WasteAI).
 
-*Built with TensorFlow · MobileNetV2 · Streamlit · TrashNet Dataset*
+- Original repository: [Shwetatiwari05/WasteAI](https://github.com/Shwetatiwari05/WasteAI)
+- Original hosted demo: [Waste Classifier AI](https://huggingface.co/spaces/ShwetaTiwari05/waste-classifier-ai)
+
+The existing application, trained model, and related implementation originate from the original project. Our team's work focuses on deployment, evaluation, documentation, and academic demonstration. Please consult the original creator regarding permission to redistribute or modify the project and model.
+
+## 📄 License
+
+No license has been confirmed for the original project. Permission to redistribute the original code and model should be established before selecting or adding a license to this repository.
+
+## 🌍 Our Goal
+
+To explore how accessible AI applications can support environmental awareness, waste segregation, and responsible recycling practices.
+
+**Built and documented by the WasteWise AI project team.**
